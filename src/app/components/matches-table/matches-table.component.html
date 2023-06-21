@@ -1,0 +1,45 @@
+<div>
+  <form>
+    <div class="text-center form-group">
+      <label for="term">Filter By teams </label>
+      <input
+        class="form-control"
+        type="text"
+        [(ngModel)]="term"
+        [ngModelOptions]="{ standalone: true }"
+      />
+    </div>
+  </form>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Team One</th>
+      <th scope="col">Team Two</th>
+      <th scope="col">Score One</th>
+      <th scope="col">Score Two</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let match of matchesTab | myFilter : term">
+      <td>{{ match._id }}</td>
+      <td>{{ match.teamOne | asterix }}</td>
+      <td>{{ match.teamTwo }}</td>
+      <td>{{ match.scoreOne }}</td>
+      <td>{{ match.scoreTwo }}</td>
+      <td>
+        <button class="btn btn-success" (click)="goToMatchInfo(match._id)">
+          Display
+        </button>
+        <button class="btn btn-warning" (click)="goToMatchEdit(match._id)">
+          Edit
+        </button>
+        <button class="btn btn-danger" (click)="deleteMatch(match._id)">
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

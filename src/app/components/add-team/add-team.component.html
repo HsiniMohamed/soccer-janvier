@@ -1,0 +1,66 @@
+<div
+  class="hero overlay"
+  style="background-image: url('assets/images/bg_3.jpg')"
+>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-9 mx-auto text-center">
+        <h1 class="text-white">Add Team</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="site-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10">
+        <form #teamForm="ngForm" (ngSubmit)="addTeam()">
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="team.name"
+              [ngModelOptions]="{ standalone: true }"
+              placeholder=" Name"
+              #team="ngModel"
+              [ngClass]="{ 'is-invalid': teamForm.submitted && team.invalid }"
+              required
+            />
+            <div
+              *ngIf="teamForm.submitted && team.invalid"
+              class="invalid-feedback"
+            >
+              <p *ngIf="team.errors.required">Team One Is Required</p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="team.owner"
+              [ngModelOptions]="{ standalone: true }"
+              placeholder="Owner"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="team.stadium"
+              [ngModelOptions]="{ standalone: true }"
+              placeholder="Stadium"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="submit"
+              class="btn btn-primary py-3 px-5"
+              value="Add"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

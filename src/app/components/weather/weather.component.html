@@ -1,0 +1,85 @@
+<div
+  class="hero overlay"
+  style="background-image: url('assets/images/bg_3.jpg')"
+>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-9 mx-auto text-center">
+        <h1 class="text-white">Weather</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="site-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10">
+        <form [formGroup]="weatherForm">
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              formControlName="city"
+              placeholder="Enter a City"
+            />
+          </div>
+          <div
+            *ngIf="
+              weatherForm.controls['city'].invalid &&
+              (weatherForm.controls['city'].touched ||
+                weatherForm.controls['city'].dirty)
+            "
+          >
+            <div *ngIf="weatherForm.controls['city'].errors.required">
+              City Is Required
+            </div>
+          </div>
+
+          <div class="form-group">
+            <input
+              type="submit"
+              class="btn btn-primary py-3 px-5"
+              value="Search"
+              (click)="searchWeather()"
+              [disabled]="weatherForm.invalid"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="col-lg-6" style="margin-left: 25%">
+        <div class="widget-next-match">
+          <div class="widget-title">
+            <h3>{{ weatherForm.value.city }}</h3>
+          </div>
+          <div class="widget-body mb-3">
+            <div class="widget-vs">
+              <div
+                class="d-flex align-items-center justify-content-around justify-content-between w-100"
+              >
+                <div class="team-1 text-center">
+                  <img [src]="weatherResult.icone" alt="" />
+                  <h3>{{ weatherResult.description }}</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center widget-vs-contents mb-4">
+            <h4>{{ weatherResult.temperature }}</h4>
+            <p class="mb-5">
+              <span class="d-block">Sunrise: {{ weatherResult.sunrise }}</span>
+              <span class="d-block">Sunset: {{ weatherResult.sunset }}</span>
+              <strong class="text-primary"
+                >Pressure: {{ weatherResult.pressure }}</strong
+              >
+              ||
+              <strong class="text-primary"
+                >Humidity: {{ weatherResult.humidity }}</strong
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

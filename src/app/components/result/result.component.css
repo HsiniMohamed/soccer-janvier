@@ -1,0 +1,15 @@
+.marginTop{
+  margin-top: 130px;
+}
+.win{
+  color: greenyellow;
+  font-size: 50ox;
+}
+.loss{
+  color: orange;
+  font-size: 20ox;
+}
+.draw{
+  color: blue;
+  font-size: 35px;
+}
